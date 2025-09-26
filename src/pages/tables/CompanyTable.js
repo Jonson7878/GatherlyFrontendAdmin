@@ -21,6 +21,7 @@ import {
 import BusinessIcon from "@mui/icons-material/Business";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
+import API_BASE from '../../config/api';
 
 export default function CompanyList() {
   const [companies, setCompanies] = useState([]);
@@ -44,7 +45,7 @@ export default function CompanyList() {
           return;
         }
 
-        const res = await fetch("http://localhost:4000/api/company/companies", {
+        const res = await fetch(`${API_BASE}/api/company/companies`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -88,7 +89,7 @@ export default function CompanyList() {
         return;
       }
 
-      const res = await fetch(`http://localhost:4000/api/company/${companyId}`, {
+      const res = await fetch(`${API_BASE}/api/company/${companyId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -124,7 +125,7 @@ export default function CompanyList() {
   setIsUpdating(true);
   try {
     const token = localStorage.getItem("token");
-    const res = await fetch(`http://localhost:4000/api/company/update/${selectedCompany._id}`, {
+    const res = await fetch(`${API_BASE}/api/company/update/${selectedCompany._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

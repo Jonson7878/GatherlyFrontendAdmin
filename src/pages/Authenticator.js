@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import axios from 'axios';
+import API_BASE from '../config/api';
 import { Box, Card, CardContent, Typography, Stack, TextField, Button, IconButton, Tooltip, Alert } from '@mui/material';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -32,8 +33,6 @@ const Authenticator = () => {
   const [alert, setAlert] = useState({ message: '', severity: '' });
   const [submitting, setSubmitting] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  const API_BASE = 'http://localhost:4000';
 
 const getAuthHeader = () => {
   const token = localStorage.getItem('token');

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import API_BASE from '../config/api';
 import ForgotPasswordSidebar from '../components/ForgotPasswordSidebar';
 import '../App.css';
 import { Alert, Stack } from '@mui/material';
@@ -29,7 +30,7 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       const response = await axios.post(
-        'http://localhost:4000/api/user/admin/sendresetlink',
+        `${API_BASE}/api/user/admin/sendresetlink`,
         { email }
       );
       setAlert({

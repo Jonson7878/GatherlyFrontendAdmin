@@ -25,6 +25,7 @@ import {
     ContentCopy as CopyIcon
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import API_BASE from '../../config/api';
 
 const PromoDashboard = () => {
     const [promoCodes, setPromoCodes] = useState([]);
@@ -55,7 +56,7 @@ const PromoDashboard = () => {
                 return;
             }
 
-            const res = await fetch("http://localhost:4000/api/offer/all", {
+            const res = await fetch(`${API_BASE}/api/offer/all`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "application/json",
@@ -136,7 +137,7 @@ const PromoDashboard = () => {
                 return;
             }
 
-            const res = await fetch("http://localhost:4000/api/offer/", {
+            const res = await fetch(`${API_BASE}/api/offer/`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -183,7 +184,7 @@ const PromoDashboard = () => {
                 return;
             }
 
-            const res = await fetch(`http://localhost:4000/api/offer/${promoId}`, {
+            const res = await fetch(`${API_BASE}/api/offer/${promoId}`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,

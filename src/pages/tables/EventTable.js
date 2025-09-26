@@ -22,6 +22,7 @@ import EventIcon from "@mui/icons-material/Event";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import SortIcon from "@mui/icons-material/Sort";
+import API_BASE from '../../config/api';
 
 const EventCard = styled(Card)(({ theme }) => ({
   width: "100%",
@@ -118,7 +119,7 @@ export default function EventList() {
         }
 
         const response = await fetch(
-          "http://localhost:4000/api/events/AllEvent",
+          `${API_BASE}/api/events/AllEvent`,
           {
             method: "GET",
             headers: {

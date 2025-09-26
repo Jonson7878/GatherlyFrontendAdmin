@@ -18,7 +18,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import BusinessIcon from '@mui/icons-material/Business';
 import EventAvailableTwoToneIcon from '@mui/icons-material/EventAvailableTwoTone';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import ReceiptLongIcon from '@mui/icons-material/ReceiptLong';
 import DiscountIcon from '@mui/icons-material/Discount';
 import logo from "../assets/logo.png";
 import UserTable from "./tables/UserTable";
@@ -36,18 +35,6 @@ const openedMixin = (theme) => ({
     duration: theme.transitions.duration.enteringScreen,
   }),
   overflowX: "hidden",
-});
-
-const closedMixin = (theme) => ({
-  transition: theme.transitions.create("width", {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  overflowX: "hidden",
-  width: `calc(${theme.spacing(7)} + 1px)`,
-  [theme.breakpoints.up("sm")]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
 });
 
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -124,59 +111,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-const CustomListItemButton = styled(ListItemButton)(({ theme }) => ({
-  borderRadius: "8px",
-  margin: "6px 12px",
-  transition: "all 0.3s ease",
-
-  "&:hover": {
-    backgroundColor: "transparent",
-  },
-
-  "&.company-button:hover": {
-    backgroundColor: "#f3e5f5",
-    color: "#8e24aa",
-  },
-  "&.company-button:hover .company-icon": {
-    color: "#8e24aa",
-  },
-
-  "&.users-button:hover": {
-    backgroundColor: "#fce4ec",
-    color: "#d81b60",
-  },
-  "&.users-button:hover .users-icon": {
-    color: "#d81b60",
-  },
-
-  "&.events-button:hover": {
-    backgroundColor: "#e0f2f1",
-    color: "#00897b",
-  },
-  "&.events-button:hover .events-icon": {
-    color: "#00897b",
-  },
-  "&.cart-button:hover": {
-    backgroundColor: "#e3f2fd", color: "#0d47a1"
-  },
-  "&.cart-button:hover .cart-icon": { color: "#0d47a1" },
-  
-  "&.promo-button:hover": {
-    backgroundColor: "#e8eaf6",
-    color: "#1a237e",
-  },
-  "&.promo-button:hover .promo-icon": {
-    color: "#1a237e",
-  },
-  "&.logout-button:hover": {
-    backgroundColor: "#ffe4e1",
-    color: "#d32f2f",
-  },
-  "&.logout-button:hover .logout-icon": {
-    color: "#d32f2f",
-  },
-}));
-
 export default function MiniDrawer() {
   const navigate = useNavigate();
   const { view } = useParams();
@@ -190,8 +124,6 @@ export default function MiniDrawer() {
       navigate(`/${lastView}/dashboard`, { replace: true });
     }
   }, [view, navigate]);
-
-  // Sidebar is always open; toggling disabled
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -274,23 +206,6 @@ export default function MiniDrawer() {
               <ListItemText primary="Company" />
             </ListItemButton>
         </ListItem>
-          {/* <ListItem disablePadding>
-            <CustomListItemButton
-              className="company-button"
-              onClick={() => navigate("/company/dashboard")}
-            >
-              <ListItemIcon
-                className="company-icon"
-                sx={{ color: "#6a1b9a"}}
-              >
-                <BusinessIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Company"
-                sx={{ textTransform: "capitalize", fontWeight: "600" }}
-              />
-            </CustomListItemButton>
-          </ListItem> */}
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => navigate("/users/dashboard")}
@@ -314,23 +229,6 @@ export default function MiniDrawer() {
               <ListItemText primary="Users" />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem disablePadding>
-            <CustomListItemButton
-              className="users-button"
-              onClick={() => navigate("/users/dashboard")}
-            >
-              <ListItemIcon
-                className="users-icon"
-                sx={{ color: "#c2185b" }}
-              >
-                <PeopleIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Users"
-                sx={{ textTransform: "capitalize", fontWeight: "600" }}
-              />
-            </CustomListItemButton>
-          </ListItem> */}
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => navigate("/events/dashboard")}
@@ -354,23 +252,6 @@ export default function MiniDrawer() {
               <ListItemText primary="Events" />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem disablePadding>
-            <CustomListItemButton
-              className="events-button"
-              onClick={() => navigate("/events/dashboard")}
-            >
-              <ListItemIcon
-                className="events-icon"
-                sx={{ color: "#00695c"}}
-              >
-                <EventAvailableTwoToneIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Events"
-                sx={{ textTransform: "capitalize", fontWeight: "600" }}
-              />
-            </CustomListItemButton>
-          </ListItem> */}
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => navigate("/orders/dashboard")}
@@ -394,23 +275,6 @@ export default function MiniDrawer() {
               <ListItemText primary="Orders" />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem disablePadding>
-            <CustomListItemButton
-              className="cart-button"
-              onClick={() => navigate("/orders/dashboard")}
-            >
-              <ListItemIcon
-                className="cart-icon"
-                sx={{ color: "#1565c0"}}
-              >
-                <ShoppingCartIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Cart"
-                sx={{ textTransform: "capitalize", fontWeight: "600" }}
-              />
-            </CustomListItemButton>
-          </ListItem> */}
           <ListItem disablePadding>
             <ListItemButton
               onClick={() => navigate("/promos/dashboard")}
@@ -434,23 +298,6 @@ export default function MiniDrawer() {
               <ListItemText primary="Promo" />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem disablePadding>
-            <CustomListItemButton
-              className="promo-button"
-              onClick={() => navigate("/promos/dashboard")}
-            >
-              <ListItemIcon
-                className="promo-icon"
-                sx={{ color: "#283593"}}
-              >
-                <DiscountIcon />
-              </ListItemIcon>
-              <ListItemText
-                primary="Promo"
-                sx={{ textTransform: "capitalize", fontWeight: "600" }}
-              />
-            </CustomListItemButton>
-          </ListItem> */}
         </List>
         <Divider sx={{
           my: 1.5,
@@ -485,17 +332,6 @@ export default function MiniDrawer() {
               <ListItemText primary="Logout" />
             </ListItemButton>
           </ListItem>
-          {/* <ListItem disablePadding>
-            <CustomListItemButton className="logout-button" onClick={handleLogout}>
-              <ListItemIcon
-                className="logout-icon"
-                sx={{ color: "#c62828"}}
-              >
-                <LogoutIcon />
-              </ListItemIcon>
-              <ListItemText primary="Logout" sx={{ fontWeight: "600" }} />
-            </CustomListItemButton>
-          </ListItem> */}
         </List>
       </Drawer>
       <Box

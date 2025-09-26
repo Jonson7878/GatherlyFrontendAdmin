@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
  
 import axios from "axios";
+import API_BASE from '../../config/api';
 import { useNavigate } from "react-router-dom";
 
 const OrdersList = () => {
@@ -42,7 +43,7 @@ const OrdersList = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:4000/api/order/allorders", {
+        const response = await axios.get(`${API_BASE}/api/order/allorders`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
